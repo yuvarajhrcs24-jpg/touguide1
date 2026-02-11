@@ -12,20 +12,6 @@ More info is available on our [documentation site](https://tourforge.github.io/)
 
 In order for the satellite imagery feature to work, you need to create a file under `app/assets/` called `tomtom.txt` and paste a TomTom API key into this file.
 
-### iOS-Specific Setup
-We've had to use a workaround on iOS due to difficulties with installing the MapLibre dependency via CocoaPods. Before you open the project for the first time in Xcode, follow these steps:
-
-1. Download the MapLibre iOS SDK; this is a zip file.
-   
-   You can either download the latest version from their [Releases page](https://github.com/maplibre/maplibre-native/releases), or you can download [v5.13.0](https://github.com/maplibre/maplibre-native/releases/tag/ios-v5.13.0), which is the version that had most recently been tested as working the last time this README was updated.
-2. Extract the zip somewhere convenient so that you can access its internal files.
-3. Find the directory titled `Mapbox.framework` under `Mapbox.xcframework/ios-arm64/Mapbox.framework`.
-4. Copy the `Mapbox.framework` directory to `app/ios/Mapbox.framework`.
-- It is important to note that in order to run the app in a simulator, you need to copy `ios-arm64_x86_64-simulator` folder instead.
-5. Open a terminal in `app/ios`, run `flutter pub get && pod install`.
-
-Now you're free to open the project in Xcode. Make sure you open `app/ios/Runner.xcworkspace`, not ~~`app/ios/Runner.xcodeproj`~~.
-
 ### Android-Specific Setup
 
 Open a terminal in the project directory and run `flutter pub get`.
