@@ -10,11 +10,20 @@ More info is available on our [documentation site](https://tourforge.github.io/)
 
 ## First-Time Development Setup
 
-In order for the satellite imagery feature to work, you need to create a file under `app/assets/` called `tomtom.txt` and paste a TomTom API key into this file.
+The Android app in this repository lives in `app/`.
+
+Optional API key setup:
+- `app/assets/tomtom.txt` is already included and can be left empty.
+- If you want satellite imagery, put your TomTom API key in `app/assets/tomtom.txt`.
 
 ### Android-Specific Setup
 
-Open a terminal in the project directory and run `flutter pub get`.
+Open a terminal and run:
+
+```bash
+cd app
+flutter pub get
+```
 
 ## Running the App on Physical Device
 
@@ -39,7 +48,9 @@ With Xcode open, follow this documentation (https://developer.apple.com/document
 
 - Initialize your desired system image and device here (https://developer.android.com/studio/run/managing-avds).
   - If this is the first time, tap `Allow` when you see the `Allow USB debugging?` box.
-- Open the Android Studio terminal and run `flutter run`.
+- Open the Android Studio terminal and run:
+  - `cd app`
+  - `flutter run`
 - You may need to get the device ID, obtainable via command `flutter emulators`.
 
 ## Building Release Distributables
