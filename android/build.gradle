@@ -1,18 +1,7 @@
 group 'org.tourforge.baseline'
 version '1.0-SNAPSHOT'
 
-buildscript {
-    ext.kotlin_version = '1.9.22'
-    repositories {
-        google()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
+ext.kotlin_version = '1.9.22'
 
 allprojects {
     repositories {
