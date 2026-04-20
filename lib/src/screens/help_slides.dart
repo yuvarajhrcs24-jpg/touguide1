@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
 class HelpSlide extends StatelessWidget {
@@ -19,8 +18,7 @@ class HelpSlide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SchedulerBinding.instance.platformDispatcher.platformBrightness ==
-              Brightness.dark
+      value: MediaQuery.platformBrightnessOf(context) == Brightness.dark
           ? SystemUiOverlayStyle.light
           : SystemUiOverlayStyle.dark,
       child: Scaffold(

@@ -33,6 +33,7 @@ class _PoiDetailsState extends State<PoiDetails>
                 tickerProvider: this,
                 gallery: widget.poi.gallery,
                 title: widget.poi.name,
+                topPadding: MediaQuery.paddingOf(context).top,
                 action: ElevatedButton(
                   onPressed: () {
                     if (Platform.isIOS) {

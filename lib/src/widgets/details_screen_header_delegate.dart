@@ -13,6 +13,7 @@ class DetailsScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
     required this.tickerProvider,
     required this.gallery,
     required this.title,
+    required this.topPadding,
     this.action,
     this.onHelpPressed,
   });
@@ -20,6 +21,7 @@ class DetailsScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
   final TickerProvider tickerProvider;
   final List<AssetModel> gallery;
   final String title;
+  final double topPadding;
   final Widget? action;
   final void Function()? onHelpPressed;
 
@@ -27,8 +29,7 @@ class DetailsScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => 384;
 
   @override
-  double get minExtent =>
-      MediaQueryData.fromWindow(ui.window).padding.top + kToolbarHeight;
+  double get minExtent => topPadding + kToolbarHeight;
 
   @override
   TickerProvider get vsync => tickerProvider;
@@ -75,7 +76,7 @@ class DetailsScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
         ),
         if (onHelpPressed != null)
           Positioned(
-            top: MediaQueryData.fromWindow(ui.window).padding.top,
+            top: topPadding,
             right: 0,
             child: IconButton(
               tooltip: "Help",
@@ -99,7 +100,7 @@ class DetailsScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
             ),
           ),
         Positioned(
-          top: MediaQueryData.fromWindow(ui.window).padding.top,
+          top: topPadding,
           left: 0,
           child: IconButton(
             onPressed: null,
@@ -129,7 +130,7 @@ class DetailsScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
           ),
         ),
         Positioned(
-          top: MediaQueryData.fromWindow(ui.window).padding.top,
+          top: topPadding,
           left: 0,
           child: IconButton(
             onPressed: () {

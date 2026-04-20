@@ -7,7 +7,6 @@ import 'dart:math';
 import 'package:audio_session/audio_session.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
@@ -78,10 +77,8 @@ Future<String> _fetchBaseUrl(String from) async {
       if (kDebugMode) {
         print("Ignoring exception during fetchBaseUrl: $e");
       }
-      // Wait 500ms, 1000ms, ... before trying again
-      // Really crappy exponential backoff with no randomness
-      // Unlike in download_manager.dart with a better impl
-      await Future.delayed(Duration(milliseconds: 500 * pow(2, i).toInt()));
+      // Wait 500ms, 1000ms, ... up to 30s before trying again
+      await Future.delayed(Duration(milliseconds: min(500 * pow(2, i).toInt(), 30000)));
     } finally {
       client.close();
     }
@@ -98,10 +95,9 @@ class _TourForgeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: tourForgeConfig.appName,
-      theme: SchedulerBinding.instance.platformDispatcher.platformBrightness ==
-              Brightness.dark
-          ? tourForgeConfig.darkThemeData
-          : tourForgeConfig.lightThemeData,
+      theme: tourForgeConfig.lightThemeData,
+      darkTheme: tourForgeConfig.darkThemeData,
+      themeMode: ThemeMode.system,
       builder: (context, child) {
         if (child != null) {
           return ScrollConfiguration(

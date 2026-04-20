@@ -96,6 +96,7 @@ class _TourDetailsState extends State<TourDetails>
                 tickerProvider: this,
                 gallery: widget.tour.gallery,
                 title: widget.tour.title,
+                topPadding: MediaQuery.paddingOf(context).top,
                 action: action,
                 onHelpPressed: _launchHelp,
               ),
