@@ -101,7 +101,7 @@ class _HomeState extends State<Home> {
                     width: 64,
                     height: 64,
                     child: CircularProgressIndicator(
-                      color: Theme.of(context).colorScheme.onBackground,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
                 );
